@@ -7,9 +7,6 @@ import { TravelTypes } from "../components/TravelTypes/Index";
 import { api } from "../services/api";
 
 export default function HomePage() {
-  useEffect(() => {
-    api.get("/continent/1");
-  }, []);
   return (
     <>
       <Header />
@@ -28,7 +25,12 @@ export default function HomePage() {
         />
         <TravelTypes />
         <Box w="4rem" border="1px solid" borderColor="text.dark" />
-        <Heading textAlign="center" fontWeight="500" lineHeight="3rem">
+        <Heading
+          textAlign="center"
+          fontSize={["0", "1.25rem", "1.5rem", "2rem", "2.25rem"]}
+          fontWeight="500"
+          lineHeight="3rem"
+        >
           Vamos nessa?
           <br /> Então escolha seu continente
         </Heading>

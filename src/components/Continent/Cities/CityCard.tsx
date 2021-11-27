@@ -9,7 +9,7 @@ interface CityCardProps {
 export function CityCard({ name, country }: CityCardProps) {
   return (
     <Box
-      maxWidth="16rem"
+      w="16rem"
       h="17.5rem"
       borderRadius=".5rem .5rem 0 0"
       transition="all ease .2s"

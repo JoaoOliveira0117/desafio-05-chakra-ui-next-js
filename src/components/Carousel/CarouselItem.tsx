@@ -12,10 +12,16 @@ export function CarouselItem() {
       justifyContent="center"
     >
       <VStack spacing="1rem">
-        <Heading color="text.light" fontSize="3rem">
+        <Heading
+          color="text.light"
+          fontSize={["2rem", "2.25rem", "2.75rem", "3rem"]}
+        >
           Europa
         </Heading>
-        <Heading color="info.dark" fontSize="1.5rem">
+        <Heading
+          color="info.dark"
+          fontSize={["0.75rem", "1rem", "1.25rem", "1.5rem"]}
+        >
           o continente mais antigo
         </Heading>
       </VStack>

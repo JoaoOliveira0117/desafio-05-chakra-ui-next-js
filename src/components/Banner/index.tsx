@@ -1,4 +1,11 @@
-import { Flex, Box, Heading, Image, Stack } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Heading,
+  Image,
+  Stack,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import React from "react";
 
 interface BannerProps {
@@ -18,6 +25,17 @@ export function Banner({
   backgroundImage,
   overlayImage,
 }: BannerProps) {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
+
+  const responsiveFontSize = {
+    base: "1.25rem",
+    md: "1.75rem",
+    lg: "2rem",
+  };
+
   return (
     <Flex
       w="100%"
@@ -35,10 +53,16 @@ export function Banner({
         align="center"
         justifyContent="space-between"
       >
-        <Stack spacing="1.25rem">
+        <Stack
+          spacing="1.25rem"
+          mx={{
+            base: "2rem",
+            "2xl": 0,
+          }}
+        >
           <Heading
             color="white"
-            fontSize={fontSize ? fontSize : "2rem"}
+            fontSize={fontSize ? fontSize : responsiveFontSize}
             fontWeight="500"
           >
             {title}
@@ -46,7 +70,7 @@ export function Banner({
           {description && (
             <Heading
               color="info.dark"
-              fontSize="1.25rem"
+              fontSize={["0.75rem", "1rem", "1.25rem"]}
               fontWeight="400"
               maxWidth="600px"
             >
@@ -54,16 +78,18 @@ export function Banner({
             </Heading>
           )}
         </Stack>
-        <Box position="relative" minWidth="28rem">
-          {overlayImage && (
-            <Image
-              src={overlayImage}
-              position="absolute"
-              right="0"
-              top="-110px"
-            />
-          )}
-        </Box>
+        {isWideVersion && (
+          <Box position="relative" minWidth="28rem">
+            {overlayImage && (
+              <Image
+                src={overlayImage}
+                position="absolute"
+                right="0"
+                top="-110px"
+              />
+            )}
+          </Box>
+        )}
       </Flex>
     </Flex>
   );
