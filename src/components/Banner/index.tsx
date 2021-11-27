@@ -1,15 +1,32 @@
 import { Flex, Box, Heading, Image, Stack } from "@chakra-ui/react";
 import React from "react";
 
-export function Banner() {
+interface BannerProps {
+  height: string;
+  title: React.ReactNode;
+  fontSize?: string;
+  description?: string;
+  backgroundImage: string;
+  overlayImage?: string;
+}
+
+export function Banner({
+  height,
+  title,
+  fontSize,
+  description,
+  backgroundImage,
+  overlayImage,
+}: BannerProps) {
   return (
     <Flex
       w="100%"
-      height="18.75rem"
-      backgroundImage="url(/index/Background.png)"
+      height={height}
+      backgroundImage={`url(${backgroundImage})`}
       backgroundRepeat="no-repeat"
       backgroundSize="cover"
-      align="center"
+      align={description ? "center" : "end"}
+      pb={description ? "" : "4rem"}
       justifyContent="center"
     >
       <Flex
@@ -19,26 +36,33 @@ export function Banner() {
         justifyContent="space-between"
       >
         <Stack spacing="1.25rem">
-          <Heading color="white" fontSize="2rem" fontWeight="500">
-            5 Continentes, <br />
-            infinitas possibilidades.
-          </Heading>
           <Heading
-            color="info.dark"
-            fontSize="1.25rem"
-            fontWeight="400"
-            maxWidth="600px"
+            color="white"
+            fontSize={fontSize ? fontSize : "2rem"}
+            fontWeight="500"
           >
-            Chegou a hora de tirar do papel a viagem que você sempre sonhou.{" "}
+            {title}
           </Heading>
+          {description && (
+            <Heading
+              color="info.dark"
+              fontSize="1.25rem"
+              fontWeight="400"
+              maxWidth="600px"
+            >
+              {description}
+            </Heading>
+          )}
         </Stack>
         <Box position="relative" minWidth="28rem">
-          <Image
-            src="/index/Airplane.png"
-            position="absolute"
-            right="0"
-            top="-110px"
-          />
+          {overlayImage && (
+            <Image
+              src={overlayImage}
+              position="absolute"
+              right="0"
+              top="-110px"
+            />
+          )}
         </Box>
       </Flex>
     </Flex>

@@ -77,6 +77,8 @@ export function makeServer() {
 
         return new Response(200, {}, continents);
       });
+
+      this.get("/continent/:id");
     },
   });
 
